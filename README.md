@@ -19,13 +19,17 @@ Co-authored-by: Haris Khan <haris.khan@domain.com>
 
 3. Open .bash_profile, and create these 2 functions:
 
-`function gac() {
+```
+function gac() {
   python3 /Users/your-name/path-to-file/main.py "no-push" "$1" "$2"
-}`
+}
+```
 
-`function gacp() {
+```
+function gacp() {
   python3 /Users/your-name/path-to-file/main.py "push" "$1" "$2"
-}`
+}
+```
 
 # Usage
 
