@@ -13,23 +13,25 @@ Co-authored-by: Haris Khan <haris.khan@domain.com>
 
 # Installation
 
-1. Download and save main.py
+1. Download **main.py**
 
-2. Create 'initial.json' in the same directory as main.py (see format of file from test_initials.json)
+2. Create **initials.json** in the same directory as **main.py**. Use the same format as **test_initials.json**.
 
-3. Open .bash_profile, and create these 2 functions:
+3. Open **~/.bash_profile** in your favourite editor, and create the following functions:
 
 ```
 function gac() {
-  python3 /Users/your-name/path-to-file/main.py "no-push" "$1" "$2"
+  python3 /Users/your-name/path-to/main.py "no-push" "$1" "$2"
 }
 ```
 
 ```
 function gacp() {
-  python3 /Users/your-name/path-to-file/main.py "push" "$1" "$2"
+  python3 /Users/your-name/path-to/main.py "push" "$1" "$2"
 }
 ```
+
+4. Reload **.bash_profile** by running `source ~/.bash_profile`
 
 # Usage
 
