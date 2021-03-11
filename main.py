@@ -2,10 +2,7 @@ import sys
 import os
 import json
 
-with open('initials.json') as f:
-    data = f.read()
-
-initials = json.loads(data)
+initials = {}
 
 
 class TestableCLI:
@@ -75,7 +72,12 @@ class InvalidCoauthors:
         return ''
 
 
-def process_git_command(args, cli):
+def process_git_command(args, cli, filename='initials.json'):
+    with open(filename) as f:
+        data = f.read()
+
+    global initials
+    initials = json.loads(data)
     gitCommand = Arguments(args).parse()
     gitCommand.run(cli)
 
