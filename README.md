@@ -33,6 +33,9 @@ function gacp() {
 
 # Usage
 
-- Commit: `gac "commit message"`
-- Commit & push: `gac "commit message"`
-- Commit & push with co-authors: `gac "commit message" co:fahad,haris`
+- Commit:\
+`gac "commit message"`
+- Commit & push:\
+`gacp "commit message"`
+- Commit & push with co-authors:\
+`gacp "commit message" co:fahad,haris`
