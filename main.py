@@ -4,7 +4,6 @@ import json
 
 initials = {}
 
-
 class TestableCLI:
     def out(self, message):
         print(message)
@@ -29,7 +28,6 @@ class Arguments:
 
 
 class Coauthors:
-
     @staticmethod
     def create(coauthors_arg=None):
         if not coauthors_arg:
@@ -74,8 +72,8 @@ def process_git_command(args, cli, filename='initials.json'):
 
     global initials
     initials = json.loads(data)
-    gitCommand = Arguments(args).parse()
-    gitCommand.run(cli)
+    git_command = Arguments(args).parse()
+    git_command.run(cli)
 
 
 class InvalidCoauthorsCommand:
