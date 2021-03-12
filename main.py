@@ -18,7 +18,7 @@ class Arguments:
         ignore_file_path = args[0]
         self.to_push = args[1] == "push"
         self.commit_message = args[2]
-        self.coauthors = (Initials(args[3]) if len(args) >= 4 else Initials()).to_coauthors()
+        self.coauthors = (Coauthors.create(args[3]) if len(args) >= 4 else Coauthors.create())
 
     def parse(self):
         if self.coauthors.are_not_valid():
@@ -28,23 +28,19 @@ class Arguments:
         return GitCommitCommand(self.commit_message, self.coauthors)
 
 
-class Initials:
-    def __init__(self, coauthors_arg=None):
-        self.coauthor_initials = []
-
-        if coauthors_arg:
-            coauthors_str = coauthors_arg.replace('co:', '')
-            self.coauthor_initials = coauthors_str.split(',')
-
-    def to_coauthors(self):
-        if not set(self.coauthor_initials).issubset(set(initials.keys())):
-            return InvalidCoauthors()
-        if len(self.coauthor_initials) == 0:
-            return NoCoauthors()
-        return Coauthors(self.coauthor_initials)
-
-
 class Coauthors:
+
+    @staticmethod
+    def create(coauthors_arg=None):
+        if not coauthors_arg:
+            return NoCoauthors()
+
+        coauthor_initials = coauthors_arg.replace('co:', '').split(',')
+
+        if not set(coauthor_initials).issubset(set(initials.keys())):
+            return InvalidCoauthors()
+        return Coauthors(coauthor_initials)
+
     def __init__(self, coauthor_initials):
         self.coauthor_initials = coauthor_initials
 
