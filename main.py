@@ -15,15 +15,15 @@ class TestableCLI:
 
 class Arguments:
     def __init__(self, args):
-        self.file_path = args[0]
-        self.push = args[1]
+        ignore_file_path = args[0]
+        self.to_push = args[1] == "push"
         self.commit_message = args[2]
         self.coauthors = (Initials(args[3]) if len(args) >= 4 else Initials()).to_coauthors()
 
     def parse(self):
         if self.coauthors.are_not_valid():
             return InvalidCoauthorsCommand()
-        if self.push == "push":
+        if self.to_push:
             return GitPushCommand(GitCommitCommand(self.commit_message, self.coauthors))
         return GitCommitCommand(self.commit_message, self.coauthors)
 
@@ -33,8 +33,8 @@ class Initials:
         self.coauthor_initials = []
 
         if coauthors_arg:
-            coauthors_str = coauthors_arg.split(":")[1]
-            self.coauthor_initials = coauthors_str.split(",")
+            coauthors_str = coauthors_arg.replace('co:', '')
+            self.coauthor_initials = coauthors_str.split(',')
 
     def to_coauthors(self):
         if not set(self.coauthor_initials).issubset(set(initials.keys())):
