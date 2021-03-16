@@ -1,11 +1,11 @@
-# What gives?
+# GACP
 
-Writing 'Co-Authored by ...' in every commit is hard.
+GACP does a git `add`, `commit` & `push`, with the ability to add co-authors.
 
-`gacp "a commit message" co:fahad,haris` will create the following commit message and push it.
+`gacp "resolved long method code smell" co:fahad,haris` will create the following commit message and push it:
 
 ```
-a commit message
+resolved long method code smell
 
 Co-authored-by: Fahad Khan <fahad.khan@domain.com>
 Co-authored-by: Haris Khan <haris.khan@domain.com>
@@ -35,11 +35,11 @@ function gacp() {
 
 # Usage
 
-#### Commit
-`gac "commit message"`
+#### Add & commit
+`gac "refactored code"`
 
-#### Commit & push
-`gacp "commit message"`
+#### Add, commit & push
+`gacp "refactored code"`
 
-#### Commit & push with co-authors
-`gacp "commit message" co:fahad,haris`
+#### Add, commit & push with co-authors
+`gacp "refactored code" co:fahad,haris`
