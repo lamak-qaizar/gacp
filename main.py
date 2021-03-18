@@ -2,6 +2,8 @@ import sys
 import os
 import json
 
+CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+
 initials = {}
 
 class TestableCLI:
@@ -66,7 +68,7 @@ class InvalidCoauthors:
         return ''
 
 
-def process_git_command(args, cli, filename='initials.json'):
+def process_git_command(args, cli, filename=CURRENT_DIRECTORY + '/initials.json'):
     with open(filename) as f:
         data = f.read()
 
