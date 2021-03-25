@@ -33,14 +33,14 @@ class MyTestCase(unittest.TestCase):
         self.cli.assert_interaction(self,
                                     commands = ['git add .',
              'git commit -m "hello"',
-             'git push'])
+             'git push origin HEAD'])
 
     def test_push_with_coauthors(self):
         process_git_command(["/path/to/script", "push", "hello", "co:fahad,haris"], self.cli, 'test_initials.json')
         self.cli.assert_interaction(self,
                                     commands = ['git add .',
              'git commit -m "hello\n\nCo-authored-by: Fahad Khan <fahad.khan@domain.com>\nCo-authored-by: Haris Khan <haris.khan@domain.com>"',
-             'git push'])
+             'git push origin HEAD'])
 
     def test_invalid_initials(self):
         process_git_command(["/path/to/script", "push", "hello", "co:blah"], self.cli, 'test_initials.json')

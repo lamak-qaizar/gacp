@@ -99,7 +99,7 @@ class GitPushCommand:
 
     def run(self, cli):
         self.gitCommit.run(cli)
-        cli.run('git push')
+        cli.run('git push origin HEAD')
 
 
 if __name__ == '__main__':
