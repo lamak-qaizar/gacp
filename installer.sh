@@ -33,7 +33,7 @@ function append_to_file() {
 
 function register_gacp_in_path() {
   echo "[gacp installer] Registering gacp aliases in ~/.bash_profile unless they are already there."
-  append_to_file "gacp=$gacp_dir/bin/gac.sh" "~/.bash_profile"
+  append_to_file "gac=$gacp_dir/bin/gac.sh" "~/.bash_profile"
   append_to_file "gacp=$gacp_dir/bin/gacp.sh" "~/.bash_profile"
   source_bash_profile_in_zsh_for_newer_macos
 }
