@@ -31,10 +31,21 @@ function append_to_file() {
   fi
 }
 
+function make_file_executable() {
+  chmod u+x "$1"
+}
+
+function create_alias() {
+  append_to_file "alias $1=$2" ~/.bash_profile
+  make_file_executable "$2"
+}
+
 function register_gacp_in_path() {
   echo "[gacp installer] Registering gacp aliases in ~/.bash_profile unless they are already there."
-  append_to_file "alias gac=$gacp_dir/bin/gac.sh" ~/.bash_profile
-  append_to_file "alias gacp=$gacp_dir/bin/gacp.sh" ~/.bash_profile
+
+  create_alias gac "$gacp_dir"/bin/gac.sh
+  create_alias gacp "$gacp_dir"/bin/gacp.sh
+
   source_bash_profile_in_zsh_for_newer_macos
 }
 
