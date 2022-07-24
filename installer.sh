@@ -18,15 +18,10 @@ function create_initials_json() {
   fi
 }
 
-function create_bash_profile() {
-  if [[ ! -e ~/.bash_profile ]]; then
-      touch ~/.bash_profile
-  fi
-}
-
 function register_gacp_in_path() {
   if [[ $PATH != *"$gacp_dir/bin"* ]]; then
-    export PATH=$PATH:$gacp_dir/bin
+    echo "export PATH=$PATH:$gacp_dir/bin" >> ~/.bash_profile
+    source ~/.bash_profile
   fi
 }
 
