@@ -21,11 +21,16 @@ function create_initials_json() {
   fi
 }
 
+function source_bash_profile_in_zsh_for_newer_macos() {
+  echo "source ~/.bash_profile" >> ~/.zshrc
+}
+
 function register_gacp_in_path() {
   echo "Registering gacp in \$PATH unless it already there. \$PATH=$PATH"
   if [[ $PATH != *"$gacp_dir/bin"* ]]; then
     echo "export PATH=$PATH:$gacp_dir/bin" >> ~/.bash_profile
     source ~/.bash_profile
+    source_bash_profile_in_zsh_for_newer_macos
     echo "~/.bash_profile has been updated. $gacp_dir/bin has been registered in PATH. \$PATH=$PATH"
   fi
 }
