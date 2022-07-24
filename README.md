@@ -13,25 +13,13 @@ Co-authored-by: Haris Khan <haris.khan@domain.com>
 
 # Installation
 
-1. Download **main.py**
-
-2. Create **initials.json** in the same directory as **main.py**. Use the same format as **test_initials.json**.
-
-3. Open **~/.bash_profile** in your favourite editor, and create the following functions:
+Run the following command to install gacp.
 
 ```
-function gac() {
-  python3 /Users/your-name/path-to/main.py "no-push" "$1" "$2"
-}
+bash < <(curl -s -H 'Cache-Control: no-cache, no-store' https://raw.githubusercontent.com/lamakq/gacp/master/installer.sh)
 ```
 
-```
-function gacp() {
-  python3 /Users/your-name/path-to/main.py "push" "$1" "$2"
-}
-```
-
-4. Reload **.bash_profile** by running `source ~/.bash_profile`
+You may need to create a new session of your terminal afterwards.
 
 # Usage
 
