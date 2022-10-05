@@ -2,7 +2,7 @@ import unittest
 from main import process_git_command
 
 
-class TestCLI:
+class MockCLI:
     def __init__(self):
         self.commands = []
         self.messages = []
@@ -20,7 +20,7 @@ class TestCLI:
 
 class MyTestCase(unittest.TestCase):
     def setUp(self):
-        self.cli = TestCLI()
+        self.cli = MockCLI()
 
     def test_commit(self):
         process_git_command(["/path/to/script", "no-push", "hello"], self.cli, 'test_initials.json')

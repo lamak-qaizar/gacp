@@ -2,6 +2,8 @@ import sys
 import os
 import json
 
+from file_helper import read_json
+
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 initials = {}
@@ -69,11 +71,8 @@ class InvalidCoauthors:
 
 
 def process_git_command(args, cli, filename=CURRENT_DIRECTORY + '/initials.json'):
-    with open(filename) as f:
-        data = f.read()
-
     global initials
-    initials = json.loads(data)
+    initials = read_json(filename)
     git_command = Arguments(args).parse()
     git_command.run(cli)
 

@@ -2,13 +2,13 @@ import json
 import sys
 import os
 
-from file_helper import read_initials
+from file_helper import read_json
 
 CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
 def add_initials(args, filename):
-    initials = read_initials(filename)
+    initials = read_json(filename)
 
     initial = args[1]
     name = args[2]
