@@ -12,3 +12,11 @@ class MyTestCase(unittest.TestCase):
             data = f.read()
         initials = json.loads(data)
         assert initials["test-initial"] == "Test Name <test-email@domain.com>"
+
+    def tearDown(self) -> None:
+        with open("test_initials.json") as f:
+            data = f.read()
+        initials = json.loads(data)
+        initials.pop("test-initial")
+        with open("test_initials.json", 'w') as f:
+            json.dump(initials, f, indent=2)
