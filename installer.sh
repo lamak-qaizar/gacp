@@ -51,6 +51,7 @@ function register_gacp_in_path() {
 
   create_alias gac "$gacp_dir"/bin/gac.sh
   create_alias gacp "$gacp_dir"/bin/gacp.sh
+ # create_alias gacp-add-initial "$gacp_dir"/bin/gacp-add-initial.sh
 
   source_bash_profile_in_zsh_for_newer_macos
 }
