@@ -2,16 +2,22 @@
 
 gacp_dir="$HOME/gacp"
 
-function clone_gacp() {
-  echo "[gacp installer] Cloning GACP unless it is already cloned under $gacp_dir."
-  if [[ ! -e $gacp_dir ]]; then
-      git -C $HOME clone https://github.com/lamakq/gacp.git
-  fi
+function clone_repo() {
+  git -C $HOME clone https://github.com/lamakq/gacp.git
 }
 
-function update_gacp() {
-  echo "[gacp installer] Pulling GACP unless it is already cloned under $gacp_dir."
+function update_repo() {
   git -C $gacp_dir pull
+}
+
+function clone_or_update_repo_if_needed() {
+  if [[ ! -e $gacp_dir ]]; then
+    echo "[gacp installer] Cloning GACP under $gacp_dir."
+    clone_repo
+    return
+  fi
+  echo "[gacp installer] Pulling GACP since it is already cloned under $gacp_dir."
+  update_repo
 }
 
 function create_initials_json() {
@@ -49,7 +55,6 @@ function register_gacp_in_path() {
   source_bash_profile_in_zsh_for_newer_macos
 }
 
-clone_gacp
-update_gacp
+clone_or_update_repo_if_needed
 create_initials_json
 register_gacp_in_path
