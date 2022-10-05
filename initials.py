@@ -1,4 +1,8 @@
 import json
+import sys
+import os
+
+CURRENT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 
 def add_initials(args, filename):
@@ -16,4 +20,5 @@ def add_initials(args, filename):
         json.dump(initials, f, indent=2)
 
 
-
+if __name__ == '__main__':
+    add_initials(sys.argv, filename=CURRENT_DIRECTORY + '/initials.json')
