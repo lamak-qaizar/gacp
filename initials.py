@@ -11,10 +11,9 @@ def add_initials(args, filename):
     email = args[3]
 
     initials[initial] = f"{name} <{email}>"
-    json_string = json.dumps(initials, indent=2)
 
     with open(filename, 'w') as f:
-        f.write(json_string)
+        json.dump(initials, f, indent=2)
 
 
 
