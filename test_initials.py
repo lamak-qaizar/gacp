@@ -1,6 +1,9 @@
 import unittest
 import json
 
+from initials import add_initials
+
+
 class MyTestCase(unittest.TestCase):
 
     def test_add_initials(self):
