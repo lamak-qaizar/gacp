@@ -43,7 +43,7 @@ function create_alias() {
 }
 
 function get_config_file() {
-    if [ -f "~/.zshrc" ]; then
+    if [ -e "~/.zshrc" ]; then
       echo "~/.zshrc"
     fi
     echo "~/.bash_profile"
