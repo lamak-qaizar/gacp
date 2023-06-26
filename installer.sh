@@ -27,10 +27,6 @@ function create_initials_json() {
   fi
 }
 
-function source_bash_profile_in_zsh_for_newer_macos() {
-  append_to_file "source ~/.bash_profile" ~/.zshrc
-}
-
 function append_to_file() {
   if ! grep -q "$1" "$2"; then
     echo "$1" >> "$2"
@@ -42,18 +38,24 @@ function make_file_executable() {
 }
 
 function create_alias() {
-  append_to_file "alias $1=$2" ~/.bash_profile
+  append_to_file "alias $1=$2" "$3"
   make_file_executable "$2"
 }
 
+function get_config_file() {
+    if [ -f "~/.zshrc" ]; then
+        return "~/.zshrc"
+    else
+        return "~/.bash_profile"
+    fi
+}
+
 function register_gacp_in_path() {
-  echo "[gacp installer] Registering gacp aliases in ~/.bash_profile unless they are already there."
+  echo "[gacp installer] Registering gacp aliases in ~/.zshrc or ~/.bash_profile unless they are already there."
 
-  create_alias gac "$gacp_dir"/bin/gac.sh
-  create_alias gacp "$gacp_dir"/bin/gacp.sh
-  create_alias gacp-add-initial "$gacp_dir"/bin/gacp-add-initial.sh
-
-  source_bash_profile_in_zsh_for_newer_macos
+  create_alias gac "$gacp_dir"/bin/gac.sh get_config_file()
+  create_alias gacp "$gacp_dir"/bin/gacp.sh get_config_file()
+  create_alias gacp-add-initial "$gacp_dir"/bin/gacp-add-initial.sh get_config_file()
 }
 
 clone_or_update_repo_if_needed
