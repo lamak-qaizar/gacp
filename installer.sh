@@ -44,10 +44,9 @@ function create_alias() {
 
 function get_config_file() {
     if [ -f "~/.zshrc" ]; then
-        return "~/.zshrc"
-    else
-        return "~/.bash_profile"
+      echo "~/.zshrc"
     fi
+    echo "~/.bash_profile"
 }
 
 function register_gacp_in_path() {
