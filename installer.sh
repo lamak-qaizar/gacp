@@ -50,7 +50,7 @@ function get_config_file() {
 }
 
 function register_gacp_in_path() {
-  echo "[gacp installer] Registering gacp aliases in ~/.zshrc or ~/.bash_profile unless they are already there."
+  echo "[gacp installer] Registering gacp aliases in "$(get_config_file)" unless they are already there."
 
   create_alias gac "$gacp_dir"/bin/gac.sh "$(get_config_file)"
   create_alias gacp "$gacp_dir"/bin/gacp.sh "$(get_config_file)"
