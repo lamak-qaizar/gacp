@@ -47,9 +47,9 @@ function create_alias() {
 }
 
 function shell_config_file() {
-  if [ -n "$ZSH_VERSION" ]; then
+  if [ "$SHELL" = "/bin/zsh" ]; then
     echo "~/.zshrc"
-  elif [ -n "$BASH_VERSION" ]; then
+  elif [ "$SHELL" = "/bin/bash" ]; then
     echo "~/.bash_profile"
   else
     log "Unknown shell. Exiting."
