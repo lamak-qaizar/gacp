@@ -60,7 +60,7 @@ function shell_config_file() {
 function create_if_not_exists() {
   filename=$1
   if ! [ -f "$filename" ]; then
-    touch "$filename"
+    touch $filename
     log "Created $filename."
   fi
 }
