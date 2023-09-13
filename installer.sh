@@ -3,7 +3,7 @@
 gacp_dir="$HOME/gacp"
 
 function log() {
-  echo "[gacp installer] $1."
+  echo "[gacp installer] $1"
 }
 
 function clone_repo() {
@@ -66,6 +66,7 @@ function create_if_not_exists() {
 }
 
 function register_gacp_in_path() {
+  log "Detected shell: $(shell_config_file)"
   create_if_not_exists $(shell_config_file)
   log "Registering gacp aliases in "$(shell_config_file)" unless they are already there."
 
