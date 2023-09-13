@@ -6,22 +6,14 @@ function log() {
   echo "[gacp installer] $1"
 }
 
-function clone_repo() {
-  git -C $HOME clone https://github.com/lamakq/gacp.git
-}
-
-function update_repo() {
-  git -C $gacp_dir pull
-}
-
 function clone_or_update_repo() {
   if [[ ! -e $gacp_dir ]]; then
     log "Cloning GACP under $gacp_dir."
-    clone_repo
-    return
+    git -C $HOME clone https://github.com/lamakq/gacp.git
+  else
+    log "Pulling GACP since it is already cloned under $gacp_dir."
+    git -C $gacp_dir pull
   fi
-  log "Pulling GACP since it is already cloned under $gacp_dir."
-  update_repo
 }
 
 function create_initials_json() {
