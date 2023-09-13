@@ -48,9 +48,9 @@ function create_alias() {
 
 function shell_config_file() {
   if [ "$SHELL" = "/bin/zsh" ]; then
-    echo "~/.zshrc"
+    echo ~/.zshrc
   elif [ "$SHELL" = "/bin/bash" ]; then
-    echo "~/.bash_profile"
+    echo ~/.bash_profile
   else
     log "Unknown shell. Exiting."
     exit 1
